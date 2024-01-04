@@ -12,7 +12,7 @@ function Hero() {
           Dive into a world of stories and imagination at our book store.
         </p>
 
-        <button className='bg-lightFg px-6 py-2 rounded-full hover:bg-lightBg'>
+        <button className='btn-lg btn-light rounded-full hover:bg-lightBg'>
           Explore Books
         </button>
       </div>

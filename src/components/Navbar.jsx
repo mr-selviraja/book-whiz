@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import { FaBars, FaXmark } from 'react-icons/fa6';
+import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router';
 import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const [isNavActive, setIsNavActive] = useState(false);
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   return (
     <>
       <nav className='bg-lightFg py-5 shadow-md'>
-        <div className='holder md:flex md:items-center md:justify-between'>
+        <div
+          className={`holder md:flex md:items-center md:justify-between ${
+            !isAuthenticated && 'flex justify-between'
+          }`}
+        >
           <div className='flex justify-between items-center'>
             <Link to='/' className='inline-flex items-center gap-x-2 md:mb-0'>
               <img width={150} src='/book-whiz-logo.svg' alt='book whiz logo' />
@@ -17,48 +23,56 @@ const Navbar = () => {
             </Link>
 
             <button
-              className='inline-block md:hidden text-xl'
+              className={`inline-block md:hidden text-xl ${
+                !isAuthenticated && 'hidden'
+              }`}
               onClick={() => setIsNavActive(!isNavActive)}
             >
               {isNavActive ? <FaXmark /> : <FaBars />}
             </button>
           </div>
 
-          <ul
-            className={`bg-lightFg py-4 md:py-0 pl-4 sm:pl-16 md:pl-0 md:flex md:items-center md:gap-x-16  md:z-auto md:static absolute  w-full left-0 md:w-auto md:opacity-100 transition-all ease-in duration-500 ${
-              isNavActive ? 'top-[64px] opacity-1' : 'top-[-100%] opacity-0'
-            }`}
-          >
-            <li className='pb-4 md:pb-0 md:mb-0'>
-              <NavLink to='/cart' className='hover:text-primary duration-500'>
-                Cart
-              </NavLink>
-            </li>
+          {isAuthenticated ? (
+            <ul
+              className={`bg-lightFg py-4 md:py-0 pl-4 sm:pl-16 md:pl-0 md:flex md:items-center md:gap-x-16  md:z-auto md:static absolute  w-full left-0 md:w-auto md:opacity-100 transition-all ease-in duration-500 ${
+                isNavActive ? 'top-[64px] opacity-1' : 'top-[-100%] opacity-0'
+              }`}
+            >
+              <li className='pb-4 md:pb-0 md:mb-0'>
+                <NavLink to='/cart' className='hover:text-primary duration-500'>
+                  Cart
+                </NavLink>
+              </li>
 
-            <li className='pb-4 md:pb-0 md:mb-0'>
-              <NavLink
-                to='/profile'
-                className='hover:text-primary duration-500'
-              >
-                Profile
-              </NavLink>
-            </li>
+              <li className='pb-4 md:pb-0 md:mb-0'>
+                <NavLink
+                  to='/profile'
+                  className='hover:text-primary duration-500'
+                >
+                  Profile
+                </NavLink>
+              </li>
 
-            <li className='md:pb-0 md:mb-0'>
-              <NavLink
-                to='/checkout'
-                className='hover:text-primary duration-500'
-              >
-                Checkout
-              </NavLink>
-            </li>
+              <li className='md:pb-0 md:mb-0'>
+                <NavLink
+                  to='/checkout'
+                  className='hover:text-primary duration-500'
+                >
+                  Checkout
+                </NavLink>
+              </li>
 
-            <li className='md:pb-0 md:mb-0'>
-              <NavLink className='hover:text-primary duration-500'>
-                Logout
-              </NavLink>
-            </li>
-          </ul>
+              <li className='md:pb-0 md:mb-0'>
+                <NavLink className='hover:text-primary duration-500'>
+                  Logout
+                </NavLink>
+              </li>
+            </ul>
+          ) : (
+            <button className='btn-sm btn-primary uppercase text-lightFg'>
+              Login
+            </button>
+          )}
         </div>
       </nav>
 
