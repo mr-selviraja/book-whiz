@@ -11,6 +11,7 @@ module.exports = {
         lightBg: '#EBEAF4',
         darkFg: '#26243B',
         darkBg: '#212032',
+        accent: '#DDDDDD',
       },
       fontFamily: {
         regular: ['Roboto', 'Verdana', 'sans-serif'],
