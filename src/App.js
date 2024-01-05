@@ -5,13 +5,20 @@ import Checkout from './pages/Checkout';
 import Page404 from './pages/Page404';
 import Profile from './pages/Profile';
 import Home from './pages/Home';
+import Modal from './components/Modal';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Navbar />,
+      element: (
+        <>
+          <Navbar />
+
+          <Modal />
+        </>
+      ),
       errorElement: <Page404 />,
       children: [
         {

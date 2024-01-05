@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { FaBars, FaXmark } from 'react-icons/fa6';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router';
 import { Link, NavLink } from 'react-router-dom';
+import { showAuthModal } from '../redux/authSlice';
+import { resetUser } from '../redux/authSlice';
 
 const Navbar = () => {
+  // State to show/hide navigation bar on devices below md
   const [isNavActive, setIsNavActive] = useState(false);
+
+  // Extract user authentication status to show/hide nav-links
   const { isAuthenticated } = useSelector((state) => state.auth);
+
+  // Dispatcher function
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -38,13 +46,13 @@ const Navbar = () => {
                 isNavActive ? 'top-[64px] opacity-1' : 'top-[-100%] opacity-0'
               }`}
             >
-              <li className='pb-4 md:pb-0 md:mb-0'>
+              <li className='mb-4 md:pb-0 md:mb-0'>
                 <NavLink to='/cart' className='hover:text-primary duration-500'>
                   Cart
                 </NavLink>
               </li>
 
-              <li className='pb-4 md:pb-0 md:mb-0'>
+              <li className='mb-4 md:pb-0 md:mb-0'>
                 <NavLink
                   to='/profile'
                   className='hover:text-primary duration-500'
@@ -53,7 +61,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
 
-              <li className='md:pb-0 md:mb-0'>
+              <li className='mb-4 md:pb-0 md:mb-0'>
                 <NavLink
                   to='/checkout'
                   className='hover:text-primary duration-500'
@@ -63,13 +71,19 @@ const Navbar = () => {
               </li>
 
               <li className='md:pb-0 md:mb-0'>
-                <NavLink className='hover:text-primary duration-500'>
+                <NavLink
+                  onClick={() => dispatch(resetUser())}
+                  className='hover:text-primary duration-500'
+                >
                   Logout
                 </NavLink>
               </li>
             </ul>
           ) : (
-            <button className='btn-sm btn-primary uppercase text-lightFg'>
+            <button
+              className='btn-sm rounded-full btn-primary uppercase text-lightFg'
+              onClick={() => dispatch(showAuthModal())}
+            >
               Login
             </button>
           )}
