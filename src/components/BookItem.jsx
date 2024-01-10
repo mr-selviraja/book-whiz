@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaRegHeart, FaPlus, FaP } from 'react-icons/fa6';
+import { FaRegHeart, FaPlus } from 'react-icons/fa6';
 import { AiFillThunderbolt } from 'react-icons/ai';
 
 const getDiscountedPrice = (price, discount) => {
