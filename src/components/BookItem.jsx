@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaRegHeart } from 'react-icons/fa6';
+import { FaRegHeart, FaPlus, FaP } from 'react-icons/fa6';
+import { AiFillThunderbolt } from 'react-icons/ai';
 
 const getDiscountedPrice = (price, discount) => {
   return Math.round(price - price * (discount / 100));
@@ -26,10 +27,16 @@ function BookItem({ book }) {
 
         <div className='flex gap-x-2 items-center mb-1'>
           <FaRegHeart className='text-3xl cursor-pointer' />
-          <button className='btn-lg btn-dark w-full'>Add to Cart</button>
+          <button className='btn-lg btn-dark w-full flex items-center gap-x-2 justify-center'>
+            <FaPlus />
+            <span>Add to Cart</span>
+          </button>
         </div>
 
-        <button className='btn-lg btn-primary w-full'>Buy Now</button>
+        <button className='btn-lg btn-primary w-full  flex items-center gap-x-2 justify-center'>
+          <AiFillThunderbolt />
+          <span>Buy Now</span>
+        </button>
       </div>
     </li>
   );
