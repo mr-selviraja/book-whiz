@@ -9,7 +9,7 @@ module.exports = {
         primaryUltralight: '#FFECC6',
         lightFg: '#F8F7FF',
         lightBg: '#EBEAF4',
-        darkFg: '#26243B',
+        darkFg: '#333150',
         darkBg: '#212032',
         accent: '#DDDDDD',
       },

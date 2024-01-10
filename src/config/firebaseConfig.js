@@ -6,7 +6,7 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -35,4 +35,5 @@ export {
   collection,
   addDoc,
   signInWithEmailAndPassword,
+  getDocs,
 };

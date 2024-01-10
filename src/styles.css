@@ -6,9 +6,11 @@
   .holder {
     @apply container mx-auto px-4 md:px-10;
   }
+
   .btn-lg {
     @apply px-6 py-2 rounded-md;
   }
+
   .btn-sm {
     @apply px-4 py-1 rounded-md text-sm;
   }
@@ -16,6 +18,11 @@
   .btn-light {
     @apply bg-lightFg hover:bg-lightBg;
   }
+
+  .btn-dark {
+    @apply bg-darkFg hover:bg-darkBg text-lightFg;
+  }
+
   .btn-primary {
     @apply bg-primary hover:bg-primaryLight text-lightFg;
   }

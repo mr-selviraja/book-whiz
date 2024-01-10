@@ -52,7 +52,7 @@ export const useSignup = () => {
 
       // Add new user to the users collection in firestore DB
       const newUserDoc = await addDoc(userCollectionRef, {
-        userId: user.uid,
+        id: user.uid,
         name: user.displayName,
         email: user.email,
         joinedOn: new Date(),

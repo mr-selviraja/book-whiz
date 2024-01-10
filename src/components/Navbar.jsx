@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className='bg-lightFg py-5 shadow-md'>
+      <nav className='bg-lightFg py-5 shadow-lg sticky top-0'>
         <div
           className={`holder md:flex md:items-center md:justify-between ${
             !isAuthenticated && 'flex justify-between'
